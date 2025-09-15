@@ -1,0 +1,78 @@
+form {
+  max-width: 640px;
+  margin: 16px auto;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #ffd1e1;
+  border-radius: 12px;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  background-color: #fff5f9;
+  color: #111827;
+}
+
+.form-control:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: #ff6ea8;
+  box-shadow: 0 0 0 3px rgba(255, 110, 168, 0.2);
+}
+
+form > h3 {
+  margin: 12px 0 8px;
+  font-weight: 700;
+  color: #d63384;
+}
+
+form > h3 + p,
+form > h3 + p ~ p {
+  margin: 4px 0;
+  padding: 8px 10px;
+  border: 1px dashed #ffb3ce;
+  background: #fff0f6;
+  border-radius: 8px;
+  color: #111827;
+}
+
+.btn {
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 600;
+}
+
+.btn + .btn {
+  margin-left: 8px;
+}
+
+.btn.btn-primary {
+  background-color: #ff6ea8;
+  border-color: #ff6ea8;
+  color: #ffffff;
+}
+
+.btn.btn-primary:hover {
+  background-color: #ff5a98;
+  border-color: #ff5a98;
+}
+
+.btn.btn-primary:focus {
+  box-shadow: 0 0 0 4px rgba(255, 110, 168, 0.25);
+  outline: none;
+}
