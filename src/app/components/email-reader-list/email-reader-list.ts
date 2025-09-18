@@ -33,7 +33,7 @@ export class EmailReaderList {
 
   send() {
     window.alert("The email " + this.currentEmail.subject + " has been sent to " + this.currentEmail.destinatory)
-    this.emailList.push(this.currentEmail);
+    this.emailList.push({...this.currentEmail}); // copy of the email
     this.clean();
   }
 

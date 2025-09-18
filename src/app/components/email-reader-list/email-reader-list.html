@@ -31,6 +31,8 @@
     <label for="subject">Subject</label>
     <input type="text"
            required
+           minlength="10"
+           maxlength="50"
            class="form-control"
            id="subject"
            placeholder="Subject"
@@ -48,6 +50,7 @@
               name="sbody"></textarea>
   </div>
 
+
   @if (semail.touched && !semail.valid) {
     <div class="alert alert-danger">
       @if (semail.errors?.['required']) {
@@ -58,6 +61,21 @@
       }
     </div>
   }
+  @if (ssubject.touched && !ssubject.valid) {
+    <div class="alert alert-danger">
+      @if (ssubject.errors?.['required']) {
+        <div>Subject is required.</div>
+      }
+      @if (ssubject.errors?.['minlength']) {
+        <div>Subject must be at least 10 characters long.</div>
+      }
+      @if (ssubject.errors?.['maxlength']) {
+        <div>Subject must be at most 50 characters long.</div>
+      }
+    </div>
+  }
+
+
 
   <h3>up-to-date viewer :</h3>
   <p>From : {{currentEmail.author}}</p>
@@ -72,11 +90,19 @@
   <button (click)="clean()" type="reset" class="btn btn-primary">Clean</button>
 </form>
 
-@for (email of emailList; track email) {
-  <div>
-    <p>From : {{email.author}}</p>
-    <p>To : {{email.destinatory}}</p>
-    <p>Subject : {{email.subject}}</p>
-    <p>Body : {{email.body}}</p>
+<h3 class="mt-4">Sent emails</h3>
+@if (emailList.length === 0) {
+  <p class="text-muted">No emails sent yet.</p>
+} @else {
+  <div class="list-group">
+    @for (email of emailList; track email) {
+      <div class="list-group-item">
+        <div><strong>From:</strong> {{email.author}}</div>
+        <div><strong>To:</strong> {{email.destinatory}}</div>
+        <div><strong>Subject:</strong> {{email.subject}}</div>
+        <div><strong>Body:</strong> {{email.body}}</div>
+      </div>
+    }
   </div>
 }
+
