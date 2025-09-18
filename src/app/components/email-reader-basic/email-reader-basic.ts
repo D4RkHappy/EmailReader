@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Email} from '../../models/email';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-email-reader-basic',
   imports: [
-    FormsModule
+    FormsModule,
+    NgClass
   ],
   templateUrl: './email-reader-basic.html',
   styleUrl: './email-reader-basic.css'
@@ -13,6 +15,7 @@ import {Email} from '../../models/email';
 export class EmailReaderBasic {
 
   currentEmail: Email;
+  @ViewChild('emailForm') emailForm: any;
 
   constructor() {
     // init object
@@ -33,12 +36,7 @@ export class EmailReaderBasic {
   }
 
   clean() {
-    this.currentEmail = {
-      author: '',
-      destinatory: '',
-      subject: '',
-      body: ''
-    }
+    this.emailForm.reset();
   }
 
 }

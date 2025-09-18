@@ -76,3 +76,11 @@ form > h3 + p ~ p {
   box-shadow: 0 0 0 4px rgba(255, 110, 168, 0.25);
   outline: none;
 }
+
+.ng-valid:not(form), .ng-valid.required {
+  border-left: 10px solid green;
+}
+
+.ng-invalid:not(form), .ng-invalid.required {
+  border-left: 10px solid red;
+}
