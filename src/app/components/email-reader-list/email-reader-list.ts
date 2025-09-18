@@ -1,18 +1,19 @@
 import {Component, ViewChild} from '@angular/core';
-import {FormsModule} from '@angular/forms';
 import {Email} from '../../models/email';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgClass} from '@angular/common';
 
 @Component({
-  selector: 'app-email-reader-basic',
+  selector: 'app-email-reader-list',
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     NgClass
   ],
-  templateUrl: './email-reader-basic.html',
-  styleUrl: './email-reader-basic.css'
+  templateUrl: './email-reader-list.html',
+  styleUrl: './email-reader-list.css'
 })
-export class EmailReaderBasic {
+export class EmailReaderList {
 
   currentEmail: Email;
   @ViewChild('emailForm') emailForm: any;

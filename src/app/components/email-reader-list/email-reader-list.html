@@ -1,0 +1,82 @@
+<form #emailForm="ngForm" (ngSubmit)="send()">
+  <div class="form-group">
+    <label for="fromEmail">From</label>
+    <input type="email"
+           required
+           class="form-control"
+           id="fromEmail"
+           aria-describedby="emailHelp"
+           placeholder="Enter email"
+           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+           [(ngModel)]="currentEmail.author"
+           name="sfrom"
+           #semail="ngModel"
+           [ngClass]="semail.valid || semail.pristine ? '': 'bg-danger'">
+  </div>
+  <div class="form-group">
+    <label for="toEmail">To</label>
+    <input type="email"
+           required
+           class="form-control"
+           id="toEmail"
+           aria-describedby="emailHelp"
+           placeholder="Enter email"
+           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+           [(ngModel)]="currentEmail.destinatory"
+           name="sto"
+           #semail="ngModel"
+           [ngClass]="semail.valid || semail.pristine ? '': 'bg-danger'">
+  </div>
+  <div class="form-group">
+    <label for="subject">Subject</label>
+    <input type="text"
+           required
+           class="form-control"
+           id="subject"
+           placeholder="Subject"
+           [(ngModel)]="currentEmail.subject"
+           name="ssubject"
+           #ssubject="ngModel"
+           [ngClass]="ssubject.valid || ssubject.pristine ? '': 'bg-danger'">
+  </div>
+  <div class="form-group">
+    <label for="body">Example textarea</label>
+    <textarea class="form-control"
+              id="body"
+              rows="5"
+              [(ngModel)]="currentEmail.body"
+              name="sbody"></textarea>
+  </div>
+
+  @if (semail.touched && !semail.valid) {
+    <div class="alert alert-danger">
+      @if (semail.errors?.['required']) {
+        <div>Email is required.</div>
+      }
+      @if (semail.errors?.['pattern']) {
+        <div>Email does not match the required pattern.</div>
+      }
+    </div>
+  }
+
+  <h3>up-to-date viewer :</h3>
+  <p>From : {{currentEmail.author}}</p>
+  <p>To : {{currentEmail.destinatory}}</p>
+  <p>Subject : {{currentEmail.subject}}</p>
+  <p>Body : {{currentEmail.body}}</p>
+  <button
+    [disabled]="!emailForm.form.valid"
+    type="submit"
+    class="btn btn-primary">
+    Send</button>
+  <button (click)="clean()" type="reset" class="btn btn-primary">Clean</button>
+</form>
+
+@for (email of emailList; track email) {
+  <div>
+    <p>From : {{email.author}}</p>
+    <p>To : {{email.destinatory}}</p>
+    <p>Subject : {{email.subject}}</p>
+    <p>Body : {{email.body}}</p>
+  </div>
+}
