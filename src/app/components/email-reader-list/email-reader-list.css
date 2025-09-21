@@ -84,3 +84,7 @@ form > h3 + p ~ p {
 .ng-invalid:not(form), .ng-invalid.required {
   border-left: 10px solid red;
 }
+
+.title {
+  text-align: center;
+}
