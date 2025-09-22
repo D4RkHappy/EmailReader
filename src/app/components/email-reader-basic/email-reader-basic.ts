@@ -21,12 +21,7 @@ export class EmailReaderBasic {
 
   constructor() {
     // init object
-    this.currentEmail = {
-      author: '',
-      destinatory: '',
-      subject: '',
-      body: ''
-    };
+    this.currentEmail = new Email('','','','');
     this.emailList = [];
   }
 
