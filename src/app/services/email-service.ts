@@ -28,12 +28,20 @@ export class EmailService {
     return this.listEmail;
   }
 
-  getEmail(id: number) : Email {
-    return this.listEmail[id];
+  getEmailById(id: number): Email | undefined {
+    return this.listEmail.find(e => e.id === id);
   }
 
   addEmail(email: Email) {
     this.listEmail.push(email);
+  }
+
+  deleteEmail(id: number) {
+    const idx = this.listEmail.findIndex(e => e.id === id);
+    if (idx !== -1) {
+      this.listEmail.splice(idx, 1);
+    }
+
   }
 
   clearEmailList() {

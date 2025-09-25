@@ -1,0 +1,16 @@
+<button type="button" (click)="goToForm()" class="btn btn-primary align-self-center">Write a new mail</button>
+@if (emailService.getEmailList().length === 0) {
+  <p class="text-muted">No emails sent yet.</p>
+} @else {
+  <div class="list-group">
+    @for (email of this.filteredEmails(); track email) {
+      <div class="list-group-item">
+        <div><strong>From:</strong> {{email.author}}</div>
+        <div><strong>To:</strong> {{email.destinatory}}</div>
+        <div><strong>Subject:</strong> {{email.subject}}</div>
+        <button type="button" (click)="viewEmail(email.id)" class="btn btn-primary align-self-center">View</button>
+        <button type="button" (click)="deleteEmail(email.id)" class="btn btn-primary align-self-center">Delete</button>
+      </div>
+    }
+  </div>
+}

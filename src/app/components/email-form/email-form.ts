@@ -1,26 +1,24 @@
 import {Component, inject, ViewChild} from '@angular/core';
 import {Email} from '../../models/email';
-import {FormsModule} from '@angular/forms';
 import {EmailService} from '../../services/email-service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgClass} from '@angular/common';
 
 @Component({
-  selector: 'app-email-with-service',
+  selector: 'app-email-form',
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     NgClass
   ],
-  templateUrl: './email-with-service.html',
-  styleUrl: './email-with-service.css'
+  templateUrl: './email-form.html',
+  styleUrl: './email-form.css'
 })
-export class EmailWithService {
+export class EmailForm {
 
   currentEmail: Email;
   @ViewChild('emailForm') emailForm: any;
   emailService: EmailService = inject(EmailService);
-
-  showBody: boolean = false;
-  filterText: string = '';
 
   constructor() {
     // init object
@@ -35,24 +33,6 @@ export class EmailWithService {
 
   clean() {
     this.emailForm.reset();
-  }
-
-  updateShowBody() {
-    this.showBody = !this.showBody;
-  }
-
-  view(id: number) {
-    let email = this.emailService.getEmailById(id);
-    if (email) {
-      window.alert("From: " + email.subject +
-        "\nTo: " + email.destinatory +
-        "\nSubject: " + email.subject +
-        "\nBody: " + email.body)
-    }
-  }
-
-  filteredEmails(): Email[] {
-    return this.emailService.filterEmails(this.filterText);
   }
 
 }

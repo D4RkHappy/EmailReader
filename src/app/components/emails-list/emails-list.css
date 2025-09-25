@@ -1,0 +1,166 @@
+:host {
+  display: block;
+  padding: 16px;
+
+  /* Tweak palette easily */
+  --surface: #ffffff;
+  --surface-2: #f7f9fc;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+
+  /* Keep in line with Bootstrap primary but refine hover/focus */
+  --primary: #0d6efd;
+  --primary-600: #0b5ed7;
+
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Top button spacing */
+:host > .btn {
+  margin: 4px 0 16px;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: 600;
+}
+
+/* Container for the email list */
+.list-group {
+  max-width: 980px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* Each email row */
+.list-group-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 16px;
+  align-items: center;
+  padding: 14px 18px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.2s ease, transform 0.04s ease;
+}
+
+.list-group-item:last-child {
+  border-bottom: 0;
+}
+
+.list-group-item:hover {
+  background: var(--surface-2);
+}
+
+.list-group-item:active {
+  transform: translateY(1px);
+}
+
+/* Text cells */
+.list-group-item > div {
+  grid-column: 1;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-group-item > div strong {
+  color: var(--muted);
+  font-weight: 600;
+  display: inline-block;
+  min-width: 84px; /* aligns labels From/To/Subject */
+}
+
+/* Action buttons column */
+.list-group-item > button {
+  grid-column: 2;
+  justify-self: end;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  min-width: 88px;
+}
+
+.list-group-item > button + button {
+  margin-top: 8px; /* stack vertically on desktop */
+}
+
+/* Refine primary buttons to feel crisp */
+.btn.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn.btn-primary:hover {
+  background-color: var(--primary-600);
+  border-color: var(--primary-600);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 0.22rem rgba(13, 110, 253, 0.35);
+}
+
+/* Empty state text */
+.text-muted {
+  color: var(--muted) !important;
+  max-width: 680px;
+  margin: 24px auto;
+  text-align: center;
+  font-size: 0.975rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 720px) {
+  .list-group {
+    border-radius: 14px;
+  }
+
+  .list-group-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px 14px;
+  }
+
+  .list-group-item > button {
+    grid-column: 1;
+    justify-self: stretch;
+  }
+
+  .list-group-item > button + button {
+    margin-top: 8px; /* keep vertical stacking on small screens */
+  }
+
+  .list-group-item > div strong {
+    min-width: 72px;
+  }
+}
+
+/* Subtle, pleasant scrollbar for long lists (WebKit browsers) */
+.list-group::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+.list-group::-webkit-scrollbar-track {
+  background: transparent;
+}
+.list-group::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.list-group::-webkit-scrollbar-thumb:hover {
+  background: #c3c8d0;
+}
+
+/* Small motion cue on interactive elements */
+.btn,
+.list-group-item {
+  will-change: transform, background-color;
+}
